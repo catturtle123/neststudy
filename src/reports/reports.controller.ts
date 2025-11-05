@@ -20,6 +20,7 @@ export class ReportsController {
     }
 
     @Patch('/:id')
+    @Serialize(ReportDto)
     approveReport(@Param('id') id: string, @Body() body: ApprovedReportDto) {
         return this.reportService.changeApprove(id, body.approved);
     }

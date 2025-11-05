@@ -31,6 +31,9 @@ export class Report {
     @Column()
     price: number;
 
+    @Column({ default: true})
+    admin: boolean;
+
     @ManyToOne(() => User, (user) => user.reports)
     user: User;
 }
