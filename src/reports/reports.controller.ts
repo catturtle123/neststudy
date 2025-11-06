@@ -7,6 +7,7 @@ import { User } from '../users/user.entity';
 import { ReportDto } from './dto/report.dto';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { ApprovedReportDto } from './dto/approve-report.dto';
+import { AdminGuard } from 'src/gurads/admin.guard';
 
 @Controller('reports')
 export class ReportsController {
@@ -20,7 +21,7 @@ export class ReportsController {
     }
 
     @Patch('/:id')
-    @Serialize(ReportDto)
+    @UseGuards(AdminGuard)
     approveReport(@Param('id') id: string, @Body() body: ApprovedReportDto) {
         return this.reportService.changeApprove(id, body.approved);
     }
