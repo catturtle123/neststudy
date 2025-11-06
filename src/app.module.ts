@@ -49,8 +49,9 @@ const cookieSession = require('cookie-session');
 export class AppModule {
   configure(consumer: MiddlewareConsumer) { // 요청이 들어올 때마다 실행될 미들웨어 설정 가능
     consumer.apply(
-          cookieSession({
-        keys: ['asdfsdf']
-      })).forRoutes('*');
+                  cookieSession({
+                keys: ['asdfsdf']
+              }))
+      .forRoutes('*');
   }
 }
