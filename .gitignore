@@ -1,6 +1,7 @@
 # db
 db.sqlite
 test.sqlite
+src/migrations/**
 
 # env file
 .env.development
