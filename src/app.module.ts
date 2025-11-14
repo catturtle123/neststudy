@@ -6,6 +6,7 @@ import { UsersModule } from './users/users.module';
 import { ReportsModule } from './reports/reports.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TYPEORM_CONFIG } from './config/typeorm.config';
 const cookieSession = require('cookie-session');
 
 @Module({
@@ -14,7 +15,7 @@ const cookieSession = require('cookie-session');
       isGlobal: true,
       envFilePath: `.env.${process.env.NODE_ENV}`
     }),
-      TypeOrmModule.forRoot(),
+      TypeOrmModule.forRoot(TYPEORM_CONFIG[process.env.NODE_ENV || 'development']),
       UsersModule, 
       ReportsModule
     ],
